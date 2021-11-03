@@ -9,7 +9,7 @@ class BrowserEngine:
     dir = os.path.dirname(os.path.abspath('.'))   #注意相对路径获取方法
     chrome_driver_path = dir + '/tools/chromedriver.exe'
 
-    def __init__(self,driver):
+    def __init__(self, driver):
         self.driver = driver
 
 
