@@ -23,3 +23,21 @@ class Logger:
         log_name = log_path + rq + '.log'
         fh = logging.FileHandler(log_name)
         fh.setLevel(logging.INFO)
+        
+        
+        #再创建一个handler,用于输出到控制台
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.INFO)
+
+        #定义handler的输出格式
+        formater = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        fh.setFormatter(formater)
+        ch.setFormatter(formater)
+
+        #给logger添加handler
+        self.logger.addHandler((fh))
+        self.logger.addHandler((ch))
+
+    def getlog(self):
+        return self.logger
+
