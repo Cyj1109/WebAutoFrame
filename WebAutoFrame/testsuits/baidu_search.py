@@ -1,9 +1,8 @@
 import time
 import unittest
 
-from selenium.webdriver.common.by import By
-
 from WebAutoFrame.framework.browser_engine import BrowserEngine
+from WebAutoFrame.pageobjects.baidu_homepage import HomePage
 
 
 class BaiduSearch(unittest.TestCase):
@@ -29,8 +28,9 @@ class BaiduSearch(unittest.TestCase):
         这里一定要test开头，把测试逻辑代码封装到一个test开头的方法里。
         :return:
         '''
-        self.driver.find_element(By.ID, "kw").send_keys('selenium')
-        self.driver.find_element(By.ID, "su").click()
+        homepage = HomePage(self.driver)
+        homepage.type_search('selenium')
+        homepage.send_submit_btn()
         time.sleep(1)
         try:
             assert 'selenium' in self.driver.title
